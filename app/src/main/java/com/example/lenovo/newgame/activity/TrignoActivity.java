@@ -96,6 +96,7 @@ public class TrignoActivity extends AppCompatActivity {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                size=65;
                 mp.start();
                 fun();
             }
@@ -126,7 +127,7 @@ public class TrignoActivity extends AppCompatActivity {
     private void set(){
         turnmove=turnmove-1;
         String m=move.getText().toString();
-        if(turnmove>=0)
+        if(turnmove>0)
         {
 
             Result.setTextSize(size);
@@ -145,12 +146,12 @@ public class TrignoActivity extends AppCompatActivity {
     }
 
     private void check() {
-        int s1=getvalue(bl1);
-        int s2=getvalue(bl2);
-        int s3=getvalue(bl3);
-        int r=s1+s2+s3;
-        Toast.makeText(this, Integer.toString(r)+Integer.toString(s1)+Integer.toString(s2)+Integer.toString(s3), Toast.LENGTH_LONG).show();
-        if(Goals.get(i).toString().equals(Integer.toString(r)))
+        float s1=getvalue(bl1);
+        float s2=getvalue(bl2);
+        float s3=getvalue(bl3);
+        float r=s1+s2+s3;
+        //Toast.makeText(this, Integer.toString(r)+Integer.toString(s1)+Integer.toString(s2)+Integer.toString(s3), Toast.LENGTH_LONG).show();
+        if(Goals.get(i).toString().equals(Float.toString(r)))
         {
             i+=1;
             size=65;
@@ -164,7 +165,7 @@ public class TrignoActivity extends AppCompatActivity {
             dialog.setPositiveButton("Next Level", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    if(i>=10){
+                    if(i>10){
                         b1.setEnabled(true);
                         b1.setBackgroundResource(R.drawable.seletor_botao2);
 
@@ -202,7 +203,7 @@ public class TrignoActivity extends AppCompatActivity {
 
     }
 
-    private int getvalue(String bl1) {
+    private float getvalue(String bl1) {
         String bll=bl1;
         switch(bll) {
             case "sin90":
@@ -210,12 +211,57 @@ public class TrignoActivity extends AppCompatActivity {
 
             case "sin0":
                 return 0;
+            case "sin30":
+                return (float) 0.5;
+            case "sin60":
+                return (float) 0.86;
+            case "sin45":
+                return (float) 0.70;
+            case "cos30":
+                return (float) 0.86;
+            case "cos60":
+                return (float) 0.5;
+            case "cos45":
+                return (float) 0.70;
+
 
             case "cos90":
                 return 0;
 
             case "cos0":
                 return 1;
+            case "cosec90":
+                return 1;
+
+            case "cosec0":
+                return 0;
+            case "cosec30":
+                return 2;
+            case "cosec60":
+                return (float) 1.15;
+            case "cosec45":
+                return (float) 1.41;
+
+            case "sec90":
+                return 0;
+
+            case "sec0":
+                return 1;
+            case "sec30":
+                return (float) 1.15;
+            case "sec60":
+                return  2;
+            case "sec45":
+                return (float) 1.41;
+            case "cot90":
+                return 0;
+
+            case "cot0":
+                return 0;
+            case "cot30":
+                return (float) 1.73;
+            case "cot60":
+                return (float) 0.57;
 
 
             case "tan45":
@@ -223,6 +269,15 @@ public class TrignoActivity extends AppCompatActivity {
 
             case "tan0":
                 return 0;
+            case "tan30":
+                return (float) 0.57;
+            case "tan60":
+                return (float) 1.73;
+            case "tan90":
+                return 0;
+
+            case "cot45":
+                return 1;
             default:
                 return 0;
         }
